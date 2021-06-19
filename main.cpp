@@ -525,7 +525,7 @@ int main(){
 			}
 		}
 
-		/// Вызов функции display класса Window./
+		/// Вызов функции display класса Window.
 		window.display();																// показывает на экране все, что происходит
 	}				
 	return 0;
