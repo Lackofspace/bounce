@@ -7,12 +7,12 @@
 #include "../src/player.h"
 
 TEST(Ball, getPlayerCoordinate) {
-  Ball ball("bounce.png", 50, 50, 20, 20);
-  ASSERT_EQ(ball.getPlayerCoordinateY(), 50);
-  ASSERT_EQ(ball.getPlayerCoordinateX(), 50);
-  ASSERT_TRUE(ball.height == 20);
-  ASSERT_TRUE(ball.width == 20);
-  ASSERT_TRUE(ball.onGround == false);
+	Ball ball("bounce.png", 50, 50, 20, 20);
+  	ASSERT_EQ(ball.getPlayerCoordinateY(), 50);
+  	ASSERT_EQ(ball.getPlayerCoordinateX(), 50);
+  	ASSERT_TRUE(ball.height == 20);
+  	ASSERT_TRUE(ball.width == 20);
+  	ASSERT_TRUE(ball.onGround == false);
 }
 
 TEST(Map, mapSize) {
@@ -238,7 +238,6 @@ TEST(gameInit2, gameCoordinates) {
 	ASSERT_EQ(p.onGround, false);
 	ASSERT_EQ(p.health, 0);
 	ASSERT_EQ(p.alive, false);
-	
 }
 
 
