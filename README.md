@@ -13,6 +13,18 @@
 
 ## Как установить эту игру (На Windows)
 
+### Для начала в корне проекта следует выполнить команды
+
+```git submodule init```
+
+```git submodule add https://github.com/google/googletest```
+
+Эти 2 команды создадут директорию в корне под названием googletest, где будут храниться исходники наших тестов.
+Далее все стандартно: запускаем conan (подключаем библиотеку) и собираем с помощью cmake.
+При клоинровании, чтобы выкачать зависимости (googletest) нужно будет выполнить команду 
+
+```git submodule update --init --recursive```
+
 ### В cmd строке прописать следующие команды :
 
 ```conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan```
