@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>                                        // подключение заголовка для работы с графикой
+#include <SFML/Graphics.hpp>                                                                // подключение заголовка для работы с графикой
 #include <iostream>
 #include <sstream>
 #include "player.h"
@@ -28,16 +28,16 @@ int main() {
     * @param rectWidth Значение размера окна по оси Ох
     * @param rectHeight Значение размера окна по оси Оу
     */
-    view.reset(sf::FloatRect(0, 0, 640, 480));                                            // размер камеры
+    view.reset(sf::FloatRect(0, 0, 640, 480));                                              // размер камеры
 
     float currPlayerX, currPlayerY = 0;
     float currCameraX, currCameraY = 0;
 
-    Ball p("bounce.png", INITIAL_POS_X, INITIAL_POS_Y, SPRITE_SIZE_X, SPRITE_SIZE_Y);    // создаем объект p класса player,задаем "bounce.png", координаты Х,У, ширина, высота.
+    Ball p("bounce.png", INITIAL_POS_X, INITIAL_POS_Y, SPRITE_SIZE_X, SPRITE_SIZE_Y);       // создаем объект p класса player,задаем "bounce.png", координаты Х,У, ширина, высота.
 
-    Image map_image;                                                                    // объект изображения для карты
-    Texture map;                                                                        // текстура карты
-    Sprite s_map;                                                                        // спрайт для карты
+    Image map_image;                                                                        // объект изображения для карты
+    Texture map;                                                                            // текстура карты
+    Sprite s_map;                                                                           // спрайт для карты
 
     /*!
     * Вызов функции loadFromFile класса Texture.
@@ -45,7 +45,7 @@ int main() {
     * @param string
     * @return bool
     */
-    map_image.loadFromFile("images/map.png");                                            // загружаем файл для карты
+    map_image.loadFromFile("images/map.png");                                               // загружаем файл для карты
 
     /*!
     * Вызов функции loadFromImage класса Texture.
@@ -53,14 +53,14 @@ int main() {
     * @param map_image
     * @return bool
     */
-    map.loadFromImage(map_image);                                                        // загружаем текстуру картинкой
+    map.loadFromImage(map_image);                                                           // загружаем текстуру картинкой
 
     /*!
     * Вызов функции setTexture класса Sprite.
     *
     * @param map
     */
-    s_map.setTexture(map);                                                                // устанавливаем текстуру спрайтом
+    s_map.setTexture(map);                                                                  // устанавливаем текстуру спрайтом
 
     /// Вызов функции SetCameraSize.
     SetCameraSize();
@@ -68,9 +68,9 @@ int main() {
     /// Конструктор по умолчанию, запускается автоматически.
     Clock clock;
 
-    Clock gameTimeClock;                                                                // хранение времени игры
+    Clock gameTimeClock;                                                                    // хранение времени игры
     int gameTime = 0;                                                                   
-    float deathX, deathY = 0;                                                            // координаты лопнутого мяча
+    float deathX, deathY = 0;                                                               // координаты лопнутого мяча
 
 
     /*!
@@ -78,7 +78,7 @@ int main() {
     *
     * @return bool
     */
-    while (window.isOpen()) {                                                            // пока окно открыто
+    while (window.isOpen()) {                                                               // пока окно открыто
 
         /*!
         * Вызов функций getElapsedTime и asMicroseconds класса Time.
@@ -86,8 +86,8 @@ int main() {
         * @return time
         */
         float time = clock.getElapsedTime().asMicroseconds();
-        if (p.alive) {                                                                    // если мяч не сдулся
-            gameTime = gameTimeClock.getElapsedTime().asSeconds();                        // игровое время идёт
+        if (p.alive) {                                                                      // если мяч не сдулся
+            gameTime = gameTimeClock.getElapsedTime().asSeconds();                          // игровое время идёт
         }
 
         /*!
@@ -95,15 +95,15 @@ int main() {
         *
         * Обнуляет счетчик времени
         */
-        clock.restart();                                                                // обнуление времени
-        time = time / 300;                                                                // скорость показа кадров
+        clock.restart();                                                                    // обнуление времени
+        time = time / 300;                                                                  // скорость показа кадров
         /// Экземпляр sf::Event содержит тип события.
-        sf::Event event;                                                                // объект события
+        sf::Event event;                                                                    // объект события
 
-        currPlayerX = p.getPlayerCoordinateX();        /// Вызов функции getPlayerCoordinateX
-        currPlayerY = p.getPlayerCoordinateY();        /// Вызов функции getPlayerCoordinateY
-        currCameraX = view.getCenter().x;            /// Вызов функции getCenter, которая выводит центр вида по Ох
-        currCameraY = view.getCenter().y;            /// Вызов функции getCenter,которая выводит центр вида по Ох
+        currPlayerX = p.getPlayerCoordinateX();       /// Вызов функции getPlayerCoordinateX.
+        currPlayerY = p.getPlayerCoordinateY();       /// Вызов функции getPlayerCoordinateY.
+        currCameraX = view.getCenter().x;             /// Вызов функции getCenter, которая выводит центр вида по Ох.
+        currCameraY = view.getCenter().y;             /// Вызов функции getCenter,которая выводит центр вида по Ох.
 
         /*!
         * Вызов функции pollEvent в цикле while.
@@ -120,7 +120,7 @@ int main() {
                 window.close();
         }
         if (p.alive ||
-            !p.isEndGame) {                                                    // если мяч не лопнул и не конец игры
+            !p.isEndGame) {                                                             // если мяч не лопнул и не конец игры
             p.moveCamera(time, currPlayerX, currPlayerY, currCameraX, currCameraY);
         }
 
@@ -164,21 +164,21 @@ int main() {
                 * @param j * SPRITE_SIZE_Y
                 * @param i * SPRITE_SIZE_X
                 */
-                s_map.setPosition(j * SPRITE_SIZE_Y, i * SPRITE_SIZE_X);                // рисуем карту спрайтами
+                s_map.setPosition(j * SPRITE_SIZE_Y, i * SPRITE_SIZE_X);                    // рисуем карту спрайтами
 
                 /*!
                 * Вызов функции draw класса RenderTarget.
                 *
                 * @param s_map
                 */
-                window.draw(s_map);                                                        // рисуем спрайты карты на экран
+                window.draw(s_map);                                                       // рисуем спрайты карты на экран
             }
 
         std::ostringstream playerHealthString, gameTimeString;                            
         playerHealthString << p.health;
-        gameTimeString << gameTime;                        // занесли число здоровья
+        gameTimeString << gameTime;                                                       // занесли число здоровья
 
-        if (p.alive && !p.isEndGame) {                                                    //	если мяч не лопнул и игра не закончилась
+        if (p.alive && !p.isEndGame) {                                                    // если мяч не лопнул и игра не закончилась
 
             /*!
             * Функция draw класса RenderTarget.
@@ -188,18 +188,18 @@ int main() {
             window.draw(p.sprite);                                                        // рисование мяча
         } 
         else {
-            if (!p.alive) {                                                                // если мяч не лопнул
+            if (!p.alive) {                                                               // если мяч не лопнул
                 Image deathImage;
                 Texture deathTexture;
                 Sprite deathSprite;
 
                 deathImage.loadFromFile("images/boom.png");
                 deathTexture.loadFromImage(deathImage);                                    // создаем из изображения текстуру
-                deathSprite.setTexture(deathTexture);                                    // создаем спрайт из текстуры
+                deathSprite.setTexture(deathTexture);                                      // создаем спрайт из текстуры
 
-                deathX = p.getPlayerCoordinateX();                                        // координата х места сдутия мяча
-                deathY = p.getPlayerCoordinateY();                                        // координата у места сдутия мяча
-                deathSprite.setPosition(deathX, deathY);                                // место, где мяч сдулся
+                deathX = p.getPlayerCoordinateX();                                         // координата х места сдутия мяча
+                deathY = p.getPlayerCoordinateY();                                         // координата у места сдутия мяча
+                deathSprite.setPosition(deathX, deathY);                                   // место, где мяч сдулся
 
                 /*!
                 * Метод draw изображает объект для Render Target.
@@ -211,7 +211,7 @@ int main() {
         }
 
         /// Вызов функции display класса Window.
-        window.display();                                                                // демонстрируем на экране все
+        window.display();                                                                  // демонстрируем на экране все
     }
     return 0;
 }
