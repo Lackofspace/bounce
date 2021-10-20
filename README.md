@@ -33,6 +33,14 @@
 
 ```conan profile update settings.cppstd=17 default```
 
+```conan remote update bincrafters https://bincrafters.jfrog.io/artifactory/api/conan/public-conan```
+
+```conan config set general.revisions_enabled=1```
+
+### В корень проекта добавим папку :
+
+```res```
+
 ### В директории, где находится проект, выполнить команды :
 
 ```conan install . -if build```
